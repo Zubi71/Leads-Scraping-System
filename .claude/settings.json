@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"__pycache__|\\\\.next/|\\\\.db$\")",
+      "Bash(gh repo *)"
+    ]
+  }
+}

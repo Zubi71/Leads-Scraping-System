@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+.env.production
+*.db
+*.sqlite3
+.venv/
+venv/
+celerybeat-schedule
+
+# Node
+node_modules/
+.next/
+.env.local
+
+# Misc
+.DS_Store
+*.log

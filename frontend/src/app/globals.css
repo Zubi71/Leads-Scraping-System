@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 4%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 6%;
+    --card-foreground: 210 40% 98%;
+    --border: 217 32% 17%;
+    --input: 217 32% 14%;
+    --ring: 221 83% 53%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 217 32% 16%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 32% 14%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 270 70% 60%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --radius: 0.75rem;
+  }
+  * { @apply border-white/[0.06]; box-sizing: border-box; }
+  body { @apply bg-[#080c14] text-white antialiased; }
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+}
+
+/* ── App Background ─────────────────────────────────────────────────────── */
+@layer components {
+  .app-bg {
+    background: #080c14;
+    background-image:
+      radial-gradient(ellipse 80% 60% at 10% 0%,   rgba(59,130,246,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 90% 90%,  rgba(139,92,246,0.14) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 50% 50%,  rgba(16,185,129,0.05) 0%, transparent 60%);
+    min-height: 100vh;
+  }
+
+  /* ── Glass Cards ──────────────────────────────────────────────────────── */
+  .glass {
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+
+  .glass-md {
+    background: rgba(255,255,255,0.06);
+    backdrop-filter: blur(24px) saturate(200%);
+    -webkit-backdrop-filter: blur(24px) saturate(200%);
+    border: 1px solid rgba(255,255,255,0.10);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  .glass-strong {
+    background: rgba(255,255,255,0.09);
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    border: 1px solid rgba(255,255,255,0.14);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.12);
+  }
+
+  .glass-sidebar {
+    background: rgba(8,12,20,0.7);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ── Glow effects ─────────────────────────────────────────────────────── */
+  .glow-blue  { box-shadow: 0 0 24px rgba(59,130,246,0.35); }
+  .glow-purple{ box-shadow: 0 0 24px rgba(139,92,246,0.35); }
+  .glow-green { box-shadow: 0 0 24px rgba(34,197,94,0.35); }
+  .glow-red   { box-shadow: 0 0 24px rgba(239,68,68,0.35); }
+
+  /* ── Input / form fields ─────────────────────────────────────────────── */
+  .glass-input {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.10);
+    color: white;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .glass-input::placeholder { color: rgba(255,255,255,0.3); }
+  .glass-input:focus {
+    outline: none;
+    border-color: rgba(59,130,246,0.6);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+    background: rgba(255,255,255,0.07);
+  }
+
+  /* ── Buttons ─────────────────────────────────────────────────────────── */
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl
+           transition-all duration-200 flex items-center justify-center gap-2;
+    box-shadow: 0 4px 15px rgba(59,130,246,0.4);
+  }
+  .btn-primary:hover { box-shadow: 0 6px 20px rgba(59,130,246,0.55); }
+  .btn-primary:disabled { @apply opacity-50 cursor-not-allowed; box-shadow: none; }
+
+  .btn-glass {
+    @apply text-white/80 hover:text-white font-medium rounded-xl transition-all duration-200
+           flex items-center justify-center gap-2;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+  .btn-glass:hover {
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.18);
+  }
+
+  /* ── Table ────────────────────────────────────────────────────────────── */
+  .glass-table thead tr {
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .glass-table tbody tr {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background .15s;
+  }
+  .glass-table tbody tr:hover { background: rgba(255,255,255,0.04); }
+
+  /* ── Gradient text ────────────────────────────────────────────────────── */
+  .gradient-text {
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Stat card accent bar ─────────────────────────────────────────────── */
+  .stat-card {
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent-color, linear-gradient(90deg, #3b82f6, #8b5cf6));
+    opacity: 0.8;
+  }
+}
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float      { animation: float 4s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-slide-in   { animation: slide-in-right .3s ease-out; }
+.animate-fade-up    { animation: fade-up .4s ease-out; }

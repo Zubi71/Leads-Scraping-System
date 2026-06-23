@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>AI Leads Pro</title>
+  <link rel="stylesheet" href="popup.css"/>
+</head>
+<body>
+<div class="app">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo-wrap">
+      <img src="icons/icon48.png" class="logo" alt=""/>
+      <div>
+        <div class="app-name">AI Leads Pro</div>
+        <div class="app-sub">Google Maps Scraper</div>
+      </div>
+    </div>
+    <div id="statusPill" class="pill pill-idle">● Idle</div>
+  </header>
+
+  <!-- Tabs -->
+  <nav class="tabs">
+    <button class="tab active" data-tab="scrape">⚡ Scrape</button>
+    <button class="tab" data-tab="results">
+      📋 Results <span id="badgeCount" class="badge hidden">0</span>
+    </button>
+    <button class="tab" data-tab="logs">📡 Logs</button>
+  </nav>
+
+  <!-- TAB 1: SCRAPE -->
+  <div id="tab-scrape" class="tab-pane active">
+    <div class="form-grid">
+      <div class="field span2">
+        <label>Business Niche / Keyword</label>
+        <input id="niche" type="text" placeholder="e.g. Dentists, Gyms, Restaurants, Salons"/>
+      </div>
+      <div class="field">
+        <label>City</label>
+        <input id="city" type="text" placeholder="Dubai"/>
+      </div>
+      <div class="field">
+        <label>Country</label>
+        <input id="country" type="text" placeholder="UAE"/>
+      </div>
+      <div class="field span2">
+        <label>Number of Leads to Scrape</label>
+        <div class="lead-options">
+          <label class="lead-opt"><input type="radio" name="leads" value="50"/> <span>50</span><small>test</small></label>
+          <label class="lead-opt"><input type="radio" name="leads" value="500" checked/> <span>500</span></label>
+          <label class="lead-opt"><input type="radio" name="leads" value="1000"/> <span>1K</span></label>
+          <label class="lead-opt"><input type="radio" name="leads" value="1500"/> <span>1.5K</span></label>
+          <label class="lead-opt"><input type="radio" name="leads" value="2000"/> <span>2K</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <label class="toggle-wrap">
+        <input id="filterNoWebsite" type="checkbox"/>
+        <span class="toggle"></span>
+        <span class="toggle-label">Only NO website <span class="tip-badge">fewer leads</span></span>
+      </label>
+      <label class="toggle-wrap">
+        <input id="filterNoSocial" type="checkbox"/>
+        <span class="toggle"></span>
+        <span class="toggle-label">Include social media only <span class="tip-badge">more leads</span></span>
+      </label>
+      <p class="filter-note">⚡ Turn both OFF to scrape ALL businesses</p>
+    </div>
+
+    <!-- Progress -->
+    <div id="progressSection" class="progress-section hidden">
+      <div class="progress-header">
+        <span id="progressText">Initialising...</span>
+        <span id="progressFraction">0 / 0</span>
+      </div>
+      <div class="progress-track"><div id="progressBar" class="progress-bar" style="width:0%"></div></div>
+      <div id="progressSub" class="progress-sub"></div>
+    </div>
+
+    <!-- Stats -->
+    <div id="statsRow" class="stats-row hidden">
+      <div class="stat"><span id="sCollected">0</span><small>Collected</small></div>
+      <div class="stat"><span id="sChecked">0</span><small>Checked</small></div>
+      <div class="stat"><span id="sSkipped">0</span><small>Skipped</small></div>
+      <div class="stat"><span id="sTarget">—</span><small>Target</small></div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="btn-row">
+      <button id="btnStart"  class="btn btn-start">▶ Start Scraping</button>
+      <button id="btnPause"  class="btn btn-pause  hidden">⏸ Pause</button>
+      <button id="btnResume" class="btn btn-resume hidden">▶ Resume</button>
+      <button id="btnStop"   class="btn btn-stop   hidden">⏹ Stop</button>
+    </div>
+  </div>
+
+  <!-- TAB 2: RESULTS -->
+  <div id="tab-results" class="tab-pane">
+    <div class="results-toolbar">
+      <span id="resultsLabel">0 leads</span>
+      <div class="toolbar-actions">
+        <button id="btnClear" class="btn-icon" title="Clear">🗑</button>
+        <button id="btnDownload" class="btn btn-download">⬇ Download CSV</button>
+      </div>
+    </div>
+    <div id="resultsList" class="results-list">
+      <div class="empty">
+        <div style="font-size:2rem;margin-bottom:8px">📋</div>
+        <p>No leads yet.<br/>Run a scrape to collect businesses.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: LOGS -->
+  <div id="tab-logs" class="tab-pane">
+    <div class="logs-toolbar">
+      <span>Activity Log</span>
+      <button id="btnClearLogs" class="btn-icon">🗑</button>
+    </div>
+    <div id="logsList" class="logs-list">
+      <div class="log-entry"><span class="log-time">--:--:--</span><span class="log-msg">Ready. Fill in the form and click Start.</span></div>
+    </div>
+  </div>
+
+</div>
+<script src="popup.js"></script>
+</body>
+</html>
